@@ -1,0 +1,45 @@
+<!--pages/scanCode/index.wxml-->
+<view class="scanCode">
+  <mp-form rules="{{rules}}" models="{{formData}}" id='form'>
+    <mp-cells title="{{ hotelName }}">
+      <view class="weui-cells weui-cells_after-title weui-button">
+        <button type="info" hover-stay-time='300' bindtap="scanBtn" data-field='mac'>
+          <view class="weui-no-sn" wx:if='{{ mac.length == 0 }}'>
+            <image src="../../utils/image/Shape_.png"></image>
+            <text>扫码添加设备</text>
+          </view>
+          <view class="weui-sn" wx:else>
+            <text>{{ mac }}</text>
+            <image src="../../utils/image/gounp.png"></image>
+          </view>
+        </button>
+      </view>
+      <mp-cell link hover title="设备类型">
+        <picker bindchange="bindTypeChange" data-field="type" range-key='typeName' value="{{ typeIndex }}" range="{{ typeList }}">
+            <view class="{{ typeIndex !== '' ? 'weui-select weui-select_in-select-after' : 'weui-select weui-select_in-select-after weui-grey' }}">
+              {{ typeIndex !== '' ? typeList[typeIndex].typeName : '选择设备类型' }}
+              <image src="../../utils/image/gengduo.png"></image>
+            </view>
+        </picker>
+      </mp-cell>
+      <mp-cell link hover title="设备名称" prop="name">
+        <input data-field="name" bindinput="formInputChange" value="{{ name }}" class="weui-input" placeholder="请输入设备名称"/>
+      </mp-cell>
+      <mp-cell link hover title="所在房间" prop="roomNo" wx:if='{{ roomType }}'>
+        <input data-field="roomNo" value="{{ roomNo }}" bindinput="formInputChange" class="weui-input" placeholder="请输入房间号码"/> 
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+  <view class="roomLists" wx:if='{{ roomList_.length != 0 }}'>
+    <view class="list" wx:for='{{ roomList_ }}' bindtap="changeRoom" data-roomNo="{{ item.id }}">{{ item.roomNumber }}</view>
+  </view>
+  <view class="footer_btns">
+    <view class="footer_btn">
+      <button hover-stay-time='300' bindtap="submitForm">
+        立即注册
+      </button>
+    </view>
+  </view>
+</view>
+
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>

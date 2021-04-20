@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/select/index",
+    "pages/index/index",
+    "pages/scanCode/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#4378BA",
+    "navigationBarTitleText": "设备注册工具",
+    "navigationBarTextStyle":"white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

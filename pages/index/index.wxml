@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="homeIndex">
+  <view class="searchBtn">
+    <mp-searchbar bindinput="selectResult" value="{{ inputVal }}"></mp-searchbar>
+  </view>
+  <view class="container">
+    <view class="lists" wx:if='{{ dataList.length != 0 }}'>
+      <view class="list" wx:for='{{ dataList }}' bindtap="goScan" data-id="{{ item.id }}"  data-tenantId="{{ item.tenantId }}">
+        {{ item.name }}
+      </view>
+    </view>
+    <!-- no msg tig -->
+    <view class="noMsgTig" wx:else>
+      <view class="steps">
+        <view class="step">
+          <text>1</text>
+          <text>选择当前酒店</text>
+        </view>
+        <view class="line">-----</view>
+        <view class="step">
+          <text>2</text>
+          <text>扫码添加设备</text>
+        </view>
+      </view>
+      <view class="noMsg">
+        <image src="../../utils/image/noMsg.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="footer_btns">
+    <view class="footer_btn">
+      <button wx:if='{{ !origin }}' hover-stay-time='300'>
+        <image src="../../utils/image/Shape.png"></image>
+        扫码添加设备
+      </button>
+    </view>
+  </view> -->
+</view>

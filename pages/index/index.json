@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "../../components/searchbar/searchbar"
+  },
+  "backgroundColor": "#F3F5F7"
+}

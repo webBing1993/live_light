@@ -1,0 +1,15 @@
+<!--pages/select/index.wxml-->
+<view class="selectBox">
+  <view class="sectionView">
+    <view class="section__title">环境选择</view>
+    <picker bindchange="bindPickerChange" value="{{ index }}" range="{{ objectArray }}" range-key="{{ 'name' }}">
+      <view class="picker">
+      {{ objectArray[index].name }}
+      <image src="../../utils/image/gengduo.png"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="btn">
+    <button :loading="sureLoading" bindtap="sureBtn">确定</button>
+  </view>
+</view>
